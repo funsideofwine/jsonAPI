@@ -16,7 +16,7 @@ xmlhttp.onreadystatechange = function() {
         document.getElementById("demo").innerHTML = this.responseText;
     }
 };
-xmlhttp.open("GET", "2.php?x=" + dbParam, true);
+xmlhttp.open("GET", "api.php?x=" + dbParam, true);
 xmlhttp.send();
 
 </script>

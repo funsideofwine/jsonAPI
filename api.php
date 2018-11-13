@@ -16,13 +16,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 $sql = "SELECT * FROM $table";
 //sql = "SELECT * FROM $table WHERE first_name like '%$first_name%' ";
 
 $result = $conn->query($sql);
 
+//json format 
 while($r = $result->fetch_assoc()) {
      $rows['member_info'][] = $r;
 }
