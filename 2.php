@@ -18,18 +18,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM $table WHERE first_name like '%rolly%' ";
+$sql = "SELECT * FROM $table";
+//sql = "SELECT * FROM $table WHERE first_name like '%$first_name%' ";
+
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "member no: " . $row["member_no"]. " - firstname: " . $row["first_name"]. " lastname" . $row["last_name"]. "<br>";
-		echo json_encode($row);
-    }
-} else {
-    echo "0 results";
+while($r = $result->fetch_assoc()) {
+     $rows['member_info'][] = $r;
 }
+
+echo json_encode($rows);
 
 $conn->close();
 ?>
