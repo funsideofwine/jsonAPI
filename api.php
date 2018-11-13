@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-$obj = json_decode($_GET["x"], false);
+//$obj = json_decode($_GET["x"], false);
+$obj = json_decode($_POST["x"], false);
 
 $first_name = $obj->first_name;
 $table =  $obj->table;
@@ -23,7 +24,7 @@ $sql = "SELECT * FROM $table";
 
 $result = $conn->query($sql);
 
-//json format 
+//json format
 while($r = $result->fetch_assoc()) {
      $rows['member_info'][] = $r;
 }
