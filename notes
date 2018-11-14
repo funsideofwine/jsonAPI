@@ -1,0 +1,21 @@
+if (client.connect(host, 3000))
+{    
+    Serial.println("\nConnected to server");
+    // Make a HTTP request    
+    client.println("POST /accel HTTP/1.1");
+    client.println("Host: 192.168.0.24");
+    client.println("Content-Type: application/json");
+    client.print("Content-Length: ");
+    client.println(object.measureLength());
+    client.println();
+    object.printTo(client);    
+}
+
+/*
+/* The C version */
+char tmp[32];
+sprintf(tmp, "Content-Length: %d", object.measureLength());
+
+// The C++ version
+String("Content-Length: ") + object.measureLength();
+*/
